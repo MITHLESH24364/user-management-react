@@ -59,16 +59,21 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid #474242;
   text-align: center;
   padding: 8px;
 }
+th {
+  background-color: #4d4d4d;
+  color: #ffffff;
+}
 
 * tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #a6a0a0;
 
 }
 .btn {

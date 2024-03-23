@@ -1,66 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import data from './Data';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import data from "./Data";
+import { Link } from "react-router-dom";
 
 
 const Detail = () => {
-    const { id } = useParams();
-    
+  const { userId } = useParams();
+  
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    age: "",
+    city: "",
+  });
 
-       const[users, setUsers] = useState({
-          username: '',
-          email: '',
-          age: '',
-          city: ''
-        });
+  useEffect(() => {
+    const newUser = data.find((obj) => obj.id.toString() === userId.toString())
+    if(newUser) {
+      setUser(newUser);
+    }
+  }, []);
 
-        useEffect(() => {
-            const user = data.find((user) => user.id === parseInt(id));
-            setUsers(user);
-        });
-    return (
-        <div>
-          <h2 className='add-user'>User Detail</h2>
-         
+  return (
+    <div>
+          <h1 className="add-user">User Detail</h1>
 
 
 
-          <table>
-        <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Age</th>
-          <th>City</th>
-          <th colSpan={2}>Action</th>
-         
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>City</th>
+            <th colSpan={2}>Action</th>
+          </tr>
+        </thead>
+        <tbody>
           
-        </tr>
-       
-              <tr>
-                <td>{users.username}</td>
-                <td>{users.email}</td>
-                <td>{users.age}</td>
-                <td>{users.city}</td>
-                <td>
-                <Link to={`/user-management/edit/${users.id}`} className="btn">Edit</Link>
-                </td>
-                <td>
-                <Link to={`/user-management/delete/${users.id}`} className="btn btn-danger">Delete</Link>
-                </td>
+            
+                  <tr>
+                    <td>{user.username}</td>
+                    <td>{user.email}</td>
+                    <td>{user.age}</td>
+                    <td>{user.city}</td>
+                    <td>
+                    
+                      <Link to={`/user-management/edit/${user.id}`} className="btn">Edit</Link>
+                      </td>
+                      <td>
+                      <Link to={`/user-management/delete/${user.id}`} className="btn btn-danger">Delete</Link>
+                    </td>
+                  </tr>
                 
-              </tr>
-          
               
+            
           
-     </table>
+        </tbody>
+      </table>
 
-
-
-
-
-
-          </div>
-       
-      );
+    </div>
+  )
 }
+
 export default Detail;
