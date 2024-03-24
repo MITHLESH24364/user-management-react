@@ -49,7 +49,7 @@ const data = [
       username: 'Sadhana Sapkota',
       email: 'mandeyra7@gmail.com',
       age: 22,
-      city: 'Kathmandu'
+      city: 'Dhading'
     }
 ];
 
