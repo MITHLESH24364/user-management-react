@@ -14,6 +14,7 @@ const AddUser = () => {
   const Navigate = useNavigate();
 
   const [users, setUsers] = useState({
+    id: '',
     username: '',
     email: '',
     age: '',
@@ -21,6 +22,9 @@ const AddUser = () => {
   });
 
 
+  const handleIdChange = (event) => {
+    setUsers({...users, id: event.target.value})
+  }
   
   const handleUsernameChange = (event) => {
     setUsers({...users, username: event.target.value})
@@ -51,6 +55,13 @@ const AddUser = () => {
         <div class="container">
         <div class="text"></div>
         <form action="" method="">
+        <div class="form-row">
+                <div class="input-data">
+                    <input type="number"  id="id" name="id"  onChange={handleIdChange} value={users.id} required />
+                    <div class="underline"></div>
+                    <label for="">Enter Your Id</label>
+                </div>
+            </div>
             <div class="form-row">
                 <div class="input-data">
                     <input type="text"  id="fullname" name="fullname"  onChange={handleUsernameChange} value={users.username} required />

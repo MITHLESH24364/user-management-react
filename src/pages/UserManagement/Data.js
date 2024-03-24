@@ -1,6 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useState } from 'react';
+
+export const useData = () => {
+  const [data, setData] = useState([
+    // Your initial data here
+  ]);
+
+  const updateData = (updatedData) => {
+    setData(updatedData);
+  };
+
+  return { data, updateData };
+};
+
 const data = [
     {
       id: 1,
@@ -40,10 +54,13 @@ const data = [
 ];
 
 
+const updateData = (updatedUserData) => {
+  data = updatedUserData;
+};
 
+export {updateData };
 
-
-export default data;
+export default data; 
 
 
 

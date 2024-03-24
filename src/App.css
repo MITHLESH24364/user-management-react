@@ -7,6 +7,8 @@
   padding: 20px;
   color: #ffffff;
   text-align: center;
+  width: 100%;
+  height: 50px;
 }
 .row{
   height: 80vh;
@@ -14,7 +16,7 @@
 .sidebar {
   float: left;
   background-color: rgb(66, 66, 67);
-  width: 20%;
+  width: 15%;
   color: #ffffff;
   padding: 2.5%;
   height: 80vh;
@@ -34,6 +36,9 @@
   color: #ffffff;
   clear: both;
   text-align: center;
+  width: 100%;
+  height: 30px;
+
 }
 
 .sidebar-nav {
@@ -104,7 +109,7 @@ th {
 
 
 
-.product-card {
+/* .product-card {
   width: 400px;
   height: 400px;
   margin: 0 auto;
@@ -112,27 +117,27 @@ th {
   border-radius: 12px;
   box-shadow: 0px 0px 14px #ecebeb;
   padding: 12px;
-  /* margin: 20px; */
-  /* align-self: center; */
-}
+  /* margin: 20px; 
+  /* align-self: center; 
+} */
 
 
-.product-image {
+/* .product-image {
   position: relative;
   width: 100%;
   margin: 0 auto;
   height: 250px;
   overflow: hidden;
   border-radius: 12px;
-  /* background-color: #ff8b1f; */
+  /* background-color: #ff8b1f;
   
-}
+} */
 
-.product-image img {
+/* .product-image img {
   border-radius: 12px;
-}
+} */
 
-.product-title {
+/* .product-title {
   font-weight: 600;
   margin: 20px;
   font-size: 18px;
@@ -147,13 +152,13 @@ th {
   border-radius: 10px;
   text-align: center;
   font-weight: 500;
-}
-
+} */
+/* 
 .link {
   text-decoration: none;
   color: black;
   cursor: pointer;
-}
+} */
 
 
 
@@ -325,4 +330,9 @@ form .form-row .textarea {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
 }
