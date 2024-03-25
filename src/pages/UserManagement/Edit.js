@@ -468,7 +468,16 @@ import { useState, useEffect,  } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import data from './Data';
 import { useData } from './Data';
+import { validateEmail } from '../../utils/common';
 import ViTextInput from "../../components/ViTextInput";
+
+
+import { saveUserData } from "./Data";
+import { computeHeadingLevel } from "@testing-library/react";
+import axios from "axios";
+import { prevState } from "react";
+
+
 
 
 
@@ -477,6 +486,8 @@ import ViTextInput from "../../components/ViTextInput";
 
 const Edit = () => {
     const navigate = useNavigate();
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isValid, setIsValid] = useState(false);
     const { id } = useParams();
     const { Data, updateData } = useData();
 
@@ -487,6 +498,13 @@ const Edit = () => {
         age: '',
         city: ''
     });
+
+    const [errMsg, setErrMsg] = useState({
+        username: '',
+        email: '',
+        age: '',
+        city: ''
+      });
 
     useEffect(() => {
         const currentUser = data.find(user => user.id === parseInt(id));
@@ -503,11 +521,51 @@ const Edit = () => {
         }));
     }
 
+    const validateForm = () => {
+        let isValid = true;
+        const { username, email, age, city } = user;
+      
+        if (username === '') {
+          setErrMsg(prevState => ({ ...prevState, username: 'Username Required' }));
+          isValid = false;
+        }
+        
+        if (email === '') {
+          setErrMsg(prevState => ({ ...prevState, email: 'Email Required' }));
+          isValid = false;
+        } else if (!validateEmail(email)) {
+          setErrMsg(prevState => ({ ...prevState, email: 'Invalid Email Format' }));
+          isValid = false;
+        }
+      
+        if (age === '') {
+          setErrMsg(prevState => ({ ...prevState, age: 'Age Required' }));
+          isValid = false;
+        }
+      
+        if (city === '') {
+          setErrMsg(prevState => ({ ...prevState, city: 'City Required' }));
+          isValid = false;
+        }
+      
+        return isValid;
+      }
+
+    // const saveForm = () => {
+    //     // You can send the updated user data to a server if needed
+    //     console.log('Updated User:', user);
+    //     navigate('/user-management');
+    // }
+
+
     const saveForm = () => {
-        // You can send the updated user data to a server if needed
-        console.log('Updated User:', user);
+        setIsSubmitted(true);
+        console.log('save form');
+        console.log('user ',user );
+        if(validateForm()){
         navigate('/user-management');
-    }
+        }
+      }
 
     return (
         <div>
@@ -523,7 +581,9 @@ const Edit = () => {
                             title="Enter Your Username"
                             value={user.username}
                             handleChange={handleInputChange}
-                            required
+                            errMsg={errMsg.username}
+                            isSubmitted={isSubmitted}
+                            
                         />
                         <ViTextInput
                             type="email"
@@ -532,7 +592,9 @@ const Edit = () => {
                             title="Enter Your Email Address"
                             value={user.email}
                             handleChange={handleInputChange}
-                            required
+                            errMsg={errMsg.email}
+                            isSubmitted={isSubmitted}
+                            
                         />
                     </div>
                     <div className="form-row">
@@ -543,7 +605,8 @@ const Edit = () => {
                             title="Enter Your Age"
                             value={user.age}
                             handleChange={handleInputChange}
-                            required
+                            errMsg={errMsg.age}
+                            isSubmitted={isSubmitted}
                         />
                         <ViTextInput
                             type="text"
@@ -552,7 +615,9 @@ const Edit = () => {
                             title="Enter Your City"
                             value={user.city}
                             handleChange={handleInputChange}
-                            required
+                            errMsg={errMsg.city}
+                            isSubmitted={isSubmitted}
+                            
                         />
                 
 

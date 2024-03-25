@@ -85,11 +85,7 @@ const AddUser = () => {
     return isValid;
   }
   
-  const validateEmail = (email) => {
-    // Regular expression for basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
+
   
 
 
@@ -134,6 +130,7 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.username}
                 />
+
                 <ViTextInput
                 title="Enter Your Email Address"
                 name="email"
@@ -143,6 +140,7 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.email}
                 />
+
             </div>
             <br/>
             <div class="form-row">
@@ -156,8 +154,7 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage="Age Required"
                 />
-
-
+                
                 <ViTextInput
                 title="Enter Your City"
                 name="city"
