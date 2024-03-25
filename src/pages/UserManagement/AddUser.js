@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveUserData } from "./Data";
+import { computeHeadingLevel } from "@testing-library/react";
+import ViTextInput from "../../components/ViTextInput";
+import { validateEmail } from "../../utils/common";
 
 
  
@@ -12,9 +15,16 @@ const AddUser = () => {
   // const [age, setAge] = useState('');
   // const [city, setCity] = useState('');
   const Navigate = useNavigate();
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isValid, setIsValid] = useState(false);
   const [users, setUsers] = useState({
-    id: '',
+    //id: '',
+    username: '',
+    email: '',
+    age: '',
+    city: ''
+  });
+  const [errMsg, setErrMsg] = useState({
     username: '',
     email: '',
     age: '',
@@ -22,75 +32,155 @@ const AddUser = () => {
   });
 
 
-  const handleIdChange = (event) => {
-    setUsers({...users, id: event.target.value})
+
+  const validateForm = () => {
+    let isValid = true;
+    if (users.username === '') {
+      errMsg.username = 'Username Required';
+      isValid = false;
+    }
+    if (users.email === '') {
+      errMsg.email = 'Email Required';
+      isValid = false;
+    } else if (validateEmail) {
+      errMsg.email = 'Invalid Email';
+      isValid = false;
+    }
+    if (users.age === '') {
+      errMsg.age = 'Age Required';
+      isValid = false;
+    }
+    if (users.city === '') {
+      errMsg.city = 'City Required';
+      isValid = false;
+    }
+    return isValid;
   }
+
+
+
+
+  //const handleIdChange = (event) => {
+  //  setUsers({...users, id: event.target.value})
+ // }
   
-  const handleUsernameChange = (event) => {
-    setUsers({...users, username: event.target.value})
+  // const handleUsernameChange = (event) => {
+  //   setUsers({...users, username: event.target.value})
+  // }
+  // const handleEmailChange = (event) => {
+  //   setUsers({...users, email: event.target.value})
+  // }
+  // const handleAgeChange = (event) => {
+  //     setUsers({...users, age: event.target.value})
+  // }
+  // const handleCityChange = (event) => {
+  //     setUsers({...users, city: event.target.value})
+  // }
+  const handleChange = (event) => {
+    setUsers({...users, [event.target.name]: event.target.value})
   }
-  const handleEmailChange = (event) => {
-    setUsers({...users, email: event.target.value})
-  }
-  const handleAgeChange = (event) => {
-      setUsers({...users, age: event.target.value})
-  }
-  const handleCityChange = (event) => {
-      setUsers({...users, city: event.target.value})
-  }
+
   
-  
+
   
     const saveForm = () => {
+    setIsSubmitted(true);
     console.log('save form');
     console.log('user ',users );
+    if(validateForm()){
     Navigate('/user-management');
+    }
   }
   return (
     <div>
-      { <h2 className="add-user">Add User</h2>
+       <h2 className="add-user">Add User</h2>
    
-      }
+      
  
         <div class="container">
         <div class="text"></div>
         <form action="" method="">
-        <div class="form-row">
+        {/* <div class="form-row">
                 <div class="input-data">
                     <input type="number"  id="id" name="id"  onChange={handleIdChange} value={users.id} required />
                     <div class="underline"></div>
                     <label for="">Enter Your Id</label>
                 </div>
-            </div>
+            </div> */}
+
             <div class="form-row">
-                <div class="input-data">
-                    <input type="text"  id="fullname" name="fullname"  onChange={handleUsernameChange} value={users.username} required />
+                {/* <div class="input-data">
+                    <input type="text"  id="fullname" name="fullname"  onChange={handleUsernameChange} value={users.username}  />
                     <div class="underline"></div>
                     <label for="">Enter Your Username</label>
-                </div>
-                <div class="input-data">
-                    <input type="email"  id="email" name="email" value={users.email} onChange={handleEmailChange} required />
+                   {isSubmitted && !users.username && <span>Username Required</span>}
+                </div> */}
+                <ViTextInput
+                title="Enter Your Username"
+                name="username"
+                id="username"
+                value={users.username}
+                handleChange={handleChange}
+                isSubmitted={isSubmitted}
+                errMessage={errMsg.username}
+                />
+
+                {/* <div class="input-data">
+                    <input type="email"  id="email" name="email" value={users.email} onChange={handleChange}  />
                     <div class="underline"></div>
                     <label for="">Enter Your Email Address</label>
-                </div>
+                    {isSubmitted && !users.email && <span>Email Required</span>}
+                </div> */}
+                <ViTextInput
+                title="Enter Your Email Address"
+                name="email"
+                id="email"
+                value={users.email}
+                handleChange={handleChange}
+                isSubmitted={isSubmitted}
+                errMessage="Email Required"
+                />
             </div>
+            <br/>
             <div class="form-row">
-            <div class="input-data">
-                    <input type="number"  id="number" name="number" value={users.age} onChange={handleAgeChange}  required />
+            {/* <div class="input-data">
+                    <input type="number"  id="number" name="number" value={users.age} onChange={handleChange}   />
                     <div class="underline"></div>
                     <label for="">Enter Your Age</label>
-                </div>
-                <div class="input-data">
-                    <input type="text"  id="address" name="address"  value={users.city} onChange={handleCityChange}required />
+                    {isSubmitted && !users.age && <span>Age Required</span>}
+                </div> */}
+                <ViTextInput
+                title="Enter Your Age"
+                name="age"
+                id="age"
+                value={users.age}
+                handleChange={handleChange}
+                isSubmitted={isSubmitted}
+                errMessage="Age Required"
+                />
+
+
+                {/* <div class="input-data">
+                    <input type="text"  id="address" name="address"  value={users.city} onChange={handleChange} />
                     <div class="underline"></div>
                     <label for="">Enter Your City</label>
-                </div>
+                    {isSubmitted && !users.city && <span>City Required</span>}
+                </div> */}
+                <ViTextInput
+                title="Enter Your City"
+                name="city"
+                id="city"
+                value={users.city}
+                handleChange={handleChange}
+                isSubmitted={isSubmitted}
+                errMessage="City Required"
+                />
             </div>
             <div class="form-row">
                 <div class="input-data textarea">
                     <div class="form-row submit-btn">
                         <div class="input-data">
-                            <button className="btn" onClick={saveForm}>Save</button>
+                            <button type="button" className="btn" onClick={saveForm}>Save</button>
 
                         </div>
                     </div>
@@ -104,6 +194,8 @@ const AddUser = () => {
     </div>
   );
 }
+
+
 
 export default AddUser;
 
