@@ -370,10 +370,107 @@
 
 // export default Edit;
 
+// import { useState, useEffect,  } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+// import data from './Data';
+// import { useData } from './Data';
+
+
+
+
+
+// const Edit = () => {
+//     const navigate = useNavigate();
+//     const { id } = useParams();
+//     const { Data, updateData } = useData();
+
+//     const [user, setUser] = useState({
+//         id: '',
+//         username: '',
+//         email: '',
+//         age: '',
+//         city: ''
+//     });
+
+//     useEffect(() => {
+//         const currentUser = data.find(user => user.id === parseInt(id));
+//         if (currentUser) {
+//             setUser(currentUser);
+//         }
+//     }, [id]);
+
+//     const handleInputChange = (event) => {
+//         const { name, value } = event.target;
+//         setUser(prevState => ({
+//             ...prevState,
+//             [name]: value
+//         }));
+//     }
+
+//     const saveForm = () => {
+//         // You can send the updated user data to a server if needed
+//         console.log('Updated User:', user);
+//         navigate('/user-management');
+//     }
+
+//     return (
+//         <div>
+//             <h2 className="add-user">Edit </h2>
+//             <div className="container">
+//                 <div className="text"></div>
+//                 <form>
+//                     <div className="form-row">
+//                         <div className="input-data">
+//                             <input type="text" id="fullname" name="username" onChange={handleInputChange} value={user.username} required />
+//                             <div className="underline"></div>
+//                             <label htmlFor="fullname">Enter Your Username</label>
+//                         </div>
+//                         <div className="input-data">
+//                             <input type="email" id="email" name="email" value={user.email} onChange={handleInputChange} required />
+//                             <div className="underline"></div>
+//                             <label htmlFor="email">Enter Your Email Address</label>
+//                         </div>
+//                     </div>
+//                     <div className="form-row">
+//                         <div className="input-data">
+//                             <input type="number" id="number" name="age" value={user.age} onChange={handleInputChange} required />
+//                             <div className="underline"></div>
+//                             <label htmlFor="number">Enter Your Age</label>
+//                         </div>
+//                         <div className="input-data">
+//                             <input type="text" id="address" name="city" value={user.city} onChange={handleInputChange} required />
+//                             <div className="underline"></div>
+//                             <label htmlFor="address">Enter Your City</label>
+//                         </div>
+//                     </div>
+//                     <div className="form-row">
+//                         <div className="input-data textarea">
+//                             <div className="form-row submit-btn">
+//                                 <div className="input-data">
+//                                     <button className="btn" type="button" onClick={saveForm}>Save</button>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </form>
+//             </div>
+//         </div>
+//     );
+// }
+
+// export default Edit;
+
+
+
+
+
 import { useState, useEffect,  } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import data from './Data';
 import { useData } from './Data';
+import ViTextInput from "../../components/ViTextInput";
+
+
 
 
 
@@ -419,29 +516,50 @@ const Edit = () => {
                 <div className="text"></div>
                 <form>
                     <div className="form-row">
-                        <div className="input-data">
-                            <input type="text" id="fullname" name="username" onChange={handleInputChange} value={user.username} required />
-                            <div className="underline"></div>
-                            <label htmlFor="fullname">Enter Your Username</label>
-                        </div>
-                        <div className="input-data">
-                            <input type="email" id="email" name="email" value={user.email} onChange={handleInputChange} required />
-                            <div className="underline"></div>
-                            <label htmlFor="email">Enter Your Email Address</label>
-                        </div>
+                       <ViTextInput
+                            type="text"
+                            id="username"
+                            name="username"
+                            title="Enter Your Username"
+                            value={user.username}
+                            handleChange={handleInputChange}
+                            required
+                        />
+                        <ViTextInput
+                            type="email"
+                            id="email"
+                            name="email"
+                            title="Enter Your Email Address"
+                            value={user.email}
+                            handleChange={handleInputChange}
+                            required
+                        />
                     </div>
                     <div className="form-row">
-                        <div className="input-data">
-                            <input type="number" id="number" name="age" value={user.age} onChange={handleInputChange} required />
-                            <div className="underline"></div>
-                            <label htmlFor="number">Enter Your Age</label>
-                        </div>
-                        <div className="input-data">
-                            <input type="text" id="address" name="city" value={user.city} onChange={handleInputChange} required />
-                            <div className="underline"></div>
-                            <label htmlFor="address">Enter Your City</label>
-                        </div>
+                        <ViTextInput
+                            type="number"   
+                            id="age"
+                            name="age"
+                            title="Enter Your Age"
+                            value={user.age}
+                            handleChange={handleInputChange}
+                            required
+                        />
+                        <ViTextInput
+                            type="text"
+                            id="city"
+                            name="city"
+                            title="Enter Your City"
+                            value={user.city}
+                            handleChange={handleInputChange}
+                            required
+                        />
+                
+
+                       
+                    
                     </div>
+                   
                     <div className="form-row">
                         <div className="input-data textarea">
                             <div className="form-row submit-btn">
@@ -475,139 +593,6 @@ export default Edit;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import { useParams, Link, Navigate } from 'react-router-dom';
-// import data from './Data';
-
-// const Detail = () => {
-//     const { id } = useParams();
-
-//     const [user, setUser] = useState({
-//         username: '',
-//         email: '',
-//         age: '',
-//         city: ''
-//     });
-
-//     useEffect(() => {
-//         const foundUser = data.find(user => user.id === parseInt(id));
-//         if (foundUser) {
-//             setUser(foundUser);
-//         }
-//     }, [id]);
-
-//     const handleInputChange = event => {
-//         const { name, value } = event.target;
-//         setUser(prevUser => ({
-//             ...prevUser,
-//             [name]: value
-//         }));
-//     };
-
-//     const handleSubmit = event => {
-//         event.preventDefault();
-//         // Perform logic to update the user data in your database or data source
-//         // For demonstration, you can log the updated user data
-//         console.log('Updated User Data:', user);
-//     };
-//     const saveForm = () => {
-//                      console.log('save form');
-//                      console.log('user ',user );
-//                      Navigate('/user-management');
-//                   }
-//     return (
-//         <div>
-//             <h2 className='add-user'>User Detail</h2>
-//             <form onSubmit={handleSubmit}>
-
-
-//             <div class="form-row">
-//                  <div class="input-data">
-//                      <input type="text"  id="fullname" name="fullname" onChange={handleInputChange} value={user.username}   required />
-//                      <div class="underline"></div>
-//                      <label for="">Enter Your Username</label>
-//                  </div>
-//                  <div class="input-data">
-//                      <input type="email"  id="email" name="email" value={user.email} onChange={handleInputChange} required />
-//                     <div class="underline"></div>
-//                      <label for="">Enter Your Email Address</label>
-//                  </div>
-//              </div>
-//              <div class="form-row">
-//                  <div class="input-data">
-//                      <input type="number"  id="number" name="number" value={user.age}  onChange={handleInputChange} required />
-//                      <div class="underline"></div>
-//                      <label for="">Enter Your Age</label>
-//                  </div>
-//                  <div class="input-data">
-//                      <input type="text"  id="address" name="address" value={user.city} onChange={handleInputChange} required />
-//                      <div class="underline"></div>
-//                      <label for="">Enter Your City</label>
-//                  </div>
-//              </div>
-//             <div class="form-row">
-//                  <div class="input-data textarea">
-//                      <div class="form-row submit-btn">
-//                         <div class="input-data">
-//                              <button className="btn" onClick={saveForm}>Save</button>
-
-//                          </div>
-//                      </div>
-//                  </div>
-//              </div>
-
-
-
-
-
-//                 <table>
-//                     <tbody>
-//                         <tr>
-//                             <th>Username</th>
-//                             <td><input type="text" name="username" value={user.username} onChange={handleInputChange} /></td>
-//                         </tr>
-//                         <tr>
-//                             <th>Email</th>
-//                             <td><input type="text" name="email" value={user.email} onChange={handleInputChange} /></td>
-//                         </tr>
-//                         <tr>
-//                             <th>Age</th>
-//                             <td><input type="text" name="age" value={user.age} onChange={handleInputChange} /></td>
-//                         </tr>
-//                         <tr>
-//                             <th>City</th>
-//                             <td><input type="text" name="city" value={user.city} onChange={handleInputChange} /></td>
-//                         </tr>
-//                         <tr>
-//                             <td colSpan={2}>
-//                                 <button type="submit">Save Changes</button>
-//                             </td>
-//                         </tr>
-//                     </tbody>
-//                 </table>
-//             </form>
-//             <Link to={`/user-management/delete/${user.id}`} className="btn btn-danger">Delete</Link>
-//         </div>
-//     );
-// };
-
-// export default Detail;
 
 
 

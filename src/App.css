@@ -103,62 +103,15 @@ th {
 .btn-add {
   float: right;
 }
-
-
-
-
-
-
-/* .product-card {
-  width: 400px;
-  height: 400px;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0px 0px 14px #ecebeb;
-  padding: 12px;
-  /* margin: 20px; 
-  /* align-self: center; 
-} */
-
-
-/* .product-image {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  height: 250px;
-  overflow: hidden;
-  border-radius: 12px;
-  /* background-color: #ff8b1f;
-  
-} */
-
-/* .product-image img {
-  border-radius: 12px;
-} */
-
-/* .product-title {
-  font-weight: 600;
-  margin: 20px;
-  font-size: 18px;
-  text-align: center;
+.btn-edit {
+  background-color: #4CAF50;
 }
 
-.product-price {
-  width: 70%;
-  padding: 10px;
-  background-color: #ff8522;
-  margin: 0 auto;
-  border-radius: 10px;
-  text-align: center;
-  font-weight: 500;
-} */
-/* 
-.link {
-  text-decoration: none;
-  color: black;
-  cursor: pointer;
-} */
+
+
+
+
+
 
 
 

@@ -45,7 +45,7 @@ useEffect(() => {
                       <Link to={`/user-management/detail/${row.id}`} className="btn btn-default">Detail</Link>
                       </td>
                       <td>
-                      <Link to={`/user-management/edit/${row.id}`} className="btn">Edit</Link>
+                      <Link to={`/user-management/edit/${row.id}`} className="btn btn-edit">Edit</Link>
                       </td>
                       <td>
                       <Link to={`/user-management/delete/${row.id}`} className="btn btn-danger">Delete</Link>
