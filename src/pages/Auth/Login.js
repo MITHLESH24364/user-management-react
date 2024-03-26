@@ -74,15 +74,38 @@ const Login = () => {
     }
   };
 
-  const doLogin = () => {
-    console.log('Email:', email);
-    console.log('Password:', password);
+//   const doLogin = () => {
+//     console.log('Email:', email);
+//     console.log('Password:', password);
 
+//     let isLogin = false;
+//     if (email === 'admin@gmail.com' && password === 'admin') {
+//       isLogin = true;
+//     }
+
+//     if (isLogin) {
+//       console.log('Login successful');
+//       navigate('/user-management');
+//     } else {
+//       console.log('Login failed');
+//       alert('Login failed');
+//     }
+//   };
+
+const doLogin = () => {
+    // Trim input values
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+  
+    console.log('Email:', trimmedEmail);
+    console.log('Password:', trimmedPassword);
+  
     let isLogin = false;
-    if (email === 'admin@gmail.com' && password === 'admin') {
+    // Compare trimmed input values
+    if (trimmedEmail === 'admin@gmail.com' && trimmedPassword === 'admin') {
       isLogin = true;
     }
-
+  
     if (isLogin) {
       console.log('Login successful');
       navigate('/user-management');
@@ -91,13 +114,15 @@ const Login = () => {
       alert('Login failed');
     }
   };
+  
 
   return (
     <div className="login-form">
       <h1>User Login</h1>
       <br />
-      <ViTextInput title="Email" name="email" handleInputChange={handleInputChange} />
-      <ViPasswordInput title="Password" name="password" handleInputChange={handleInputChange} />
+      <ViTextInput title="Enter Your Email Id" name="email" handleInputChange={handleInputChange} />
+      <br />
+      <ViPasswordInput title="Enter Your Password" name="password" handleInputChange={handleInputChange} />
 
       <div className="form-group">
         <button onClick={doLogin} className="btn">

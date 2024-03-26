@@ -324,6 +324,7 @@ span {
 .login-form label {
   position: relative;
   z-index: 2;
+  color: #3498db;
 }
 
 .login-form input {
