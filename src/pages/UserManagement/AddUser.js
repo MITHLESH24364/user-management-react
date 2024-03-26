@@ -173,7 +173,7 @@ const AddUser = () => {
                 value={users.age}
                 handleChange={handleChange}
                 isSubmitted={isSubmitted}
-                errMessage="Age Required"
+                errMessage={errMsg.age}
                 />
                 {/* password end */}
               
@@ -188,7 +188,7 @@ const AddUser = () => {
                 value={users.city}
                 handleChange={handleChange}
                 isSubmitted={isSubmitted}
-                errMessage="City Required"
+                errMessage={errMsg.city}
                 />
                 {/* city end */}
             </div>
