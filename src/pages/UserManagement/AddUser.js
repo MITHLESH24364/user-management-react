@@ -7,6 +7,7 @@ import ViTextInput from "../../components/ViTextInput";
 import { validateEmail } from "../../utils/common";
 import axios from "axios";
 import { prevState } from "react";
+import ViPasswordInput from "../../components/ViPasswordInput";
 
 
 
@@ -21,12 +22,14 @@ const AddUser = () => {
   const [users, setUsers] = useState({
 
     username: '',
+    password: '',
     email: '',
     age: '',
     city: ''
   });
   const [errMsg, setErrMsg] = useState({
     username: '',
+    password: '',
     email: '',
     age: '',
     city: ''
@@ -57,10 +60,14 @@ const AddUser = () => {
 
   const validateForm = () => {
     let isValid = true;
-    const { username, email, age, city } = users;
+    const { username, password, email, age, city } = users;
   
     if (username === '') {
       setErrMsg(prevState => ({ ...prevState, username: 'Username Required' }));
+      isValid = false;
+    }
+    if (password === '') {
+      setErrMsg(prevState => ({ ...prevState, password: 'Password Required' }));
       isValid = false;
     }
     
@@ -68,7 +75,7 @@ const AddUser = () => {
       setErrMsg(prevState => ({ ...prevState, email: 'Email Required' }));
       isValid = false;
     } else if (!validateEmail(email)) {
-      setErrMsg(prevState => ({ ...prevState, email: 'Invalid Email Format' }));
+      setErrMsg(prevState => ({ ...prevState, email: 'Invalid Email' }));
       isValid = false;
     }
   
@@ -121,6 +128,7 @@ const AddUser = () => {
       
 
             <div class="form-row">
+              {/* usermane start */}
                 <ViTextInput
                 title="Enter Your Username"
                 name="username"
@@ -130,8 +138,24 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.username}
                 />
-
-                <ViTextInput
+                {/* usermane end */}
+                {/* password start */}
+                <ViPasswordInput
+                title="Enter Your Password"
+                name="password"
+                id="password"
+                value={users.password}
+                handleChange={handleChange}
+                isSubmitted={isSubmitted}
+                errMessage={errMsg.password}
+                />
+                {/* password end */}  
+                
+            </div>
+            <br/>
+            <div class="form-row">
+           {/* email start */}
+           <ViTextInput
                 title="Enter Your Email Address"
                 name="email"
                 id="email"
@@ -140,11 +164,8 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.email}
                 />
-
-            </div>
-            <br/>
-            <div class="form-row">
-           
+                {/* email end */}
+                {/* password start */}
                 <ViTextInput
                 title="Enter Your Age"
                 name="age"
@@ -154,7 +175,12 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage="Age Required"
                 />
-                
+                {/* password end */}
+              
+            </div>
+            <br/>
+            <div class="form-row">
+                {/* city start */} 
                 <ViTextInput
                 title="Enter Your City"
                 name="city"
@@ -164,6 +190,7 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage="City Required"
                 />
+                {/* city end */}
             </div>
             <div class="form-row">
                 <div class="input-data textarea">

@@ -470,6 +470,7 @@ import data from './Data';
 import { useData } from './Data';
 import { validateEmail } from '../../utils/common';
 import ViTextInput from "../../components/ViTextInput";
+import ViPasswordInput from "../../components/ViPasswordInput";
 
 
 import { saveUserData } from "./Data";
@@ -585,6 +586,17 @@ const Edit = () => {
                             isSubmitted={isSubmitted}
                             
                         />
+                        <ViPasswordInput
+                            type="password"
+                            id="password"
+                            name="password"
+                            title="Enter Your Password"
+                            value={user.password}
+                            handleChange={handleInputChange}
+                            errMsg={errMsg.password}
+                            isSubmitted={isSubmitted}
+                        />
+
                         <ViTextInput
                             type="email"
                             id="email"

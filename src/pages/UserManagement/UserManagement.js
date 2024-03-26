@@ -1,9 +1,34 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import data from './Data';
+import ViTable from '../../components/ViTable';
 
 
 const UserManagement = () => {
+
+
+  const header = [
+    {
+      key: "id",
+      name: "Id",
+    },
+    {
+      key: "username",
+      name: "Username",
+    },
+    {
+      key: "email",
+      name: "Email",
+    },
+    {
+      key: "age",
+      name: "Age",
+    },
+    {
+      key: "city",
+      name: "City",
+    }
+  ]
 
 
 
@@ -20,7 +45,7 @@ useEffect(() => {
       <h1 className="add-user">User Management</h1>
 
       <Link to="/user-management/add" className="btn pull-right">Add Uer</Link>
-      <table>
+      {/* <table>
         <thead>
           <tr>
             <th>ID</th>
@@ -60,7 +85,10 @@ useEffect(() => {
           </tr>
           }
         </tbody>
-      </table>
+      </table> */}
+      <ViTable users={users} header={header} />
+     
+
 
     </div>
   );
