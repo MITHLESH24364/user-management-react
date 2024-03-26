@@ -30,6 +30,25 @@ const UserManagement = () => {
     }
   ]
 
+  const actions = [
+    {
+      name: "Detail",
+      link: "/user-management/detail",
+      className: "btn btn-default"
+    },
+    {
+      name: "Edit",
+      link: "/user-management/edit",
+      className: "btn"
+    },
+    {
+      name: "Delete",
+      link: "/user-management/delete",
+      className: "btn btn-danger"
+    }
+  ]
+ 
+
 
 
 const [users, setUsers] = useState([]);
@@ -86,10 +105,11 @@ useEffect(() => {
           }
         </tbody>
       </table> */}
-      <ViTable users={users} header={header} />
-     
-
-
+      <ViTable 
+      users={users} 
+      header={header}
+      actions={[...actions]}
+      />
     </div>
   );
 }

@@ -116,26 +116,17 @@ th {
 
 
 .container {
-  max-width: 800px;
   background: #fff;
-  width: 800px;
-  padding: 25px 40px 10px 40px;
+  width: 100%;
+  padding: 25px 40px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
   border-radius: 10px;
 }
 
-.container .text {
-  text-align: center;
-  font-size: 35px;
-  font-weight: 600;
-  background: #ff8522;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 .container form {
-  padding: 30px 0 0 0;
+  padding: 10px;
 }
 
 .container form .form-row {
@@ -186,28 +177,44 @@ form .form-row .textarea {
   padding-top: 10px;
 }
 
+/* .input-data label {
+  position: absolute;
+  pointer-events: none;
+  font-size: 16px;  
+  transition: all 0.3s ease;
+} */
 .input-data label {
   position: absolute;
   pointer-events: none;
-  bottom: 10px;
   font-size: 16px;
   transition: all 0.3s ease;
+  top: -10px; /* Adjust the value to move the label up */
 }
+
+.input-data input:focus~label,
+.textarea textarea:focus~label,
+.input-data input:valid~label,
+.textarea textarea:valid~label {
+  transform: translateY(-10px);
+  font-size: 14px;
+  color: #3498db;
+}
+
 
 .textarea label {
   width: 100%;
   bottom: 40px;
   background: #fff;
-}
+} 
 
 .input-data .underline {
   position: absolute;
   bottom: 0;
   height: 2px;
   width: 100%;
-}
+} 
 
-.input-data .underline:before {
+/* .input-data .underline:before {
   position: absolute;
   content: "";
   height: 2px;
@@ -216,7 +223,7 @@ form .form-row .textarea {
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease;
-}
+} */
 
 .input-data input:focus~.underline:before,
 .input-data input:valid~.underline:before,
@@ -291,4 +298,77 @@ a {
 }
 span {
   color: #e11414;
+}
+.login-form {
+  
+  width: 340px;
+  margin: 200px auto ;
+  padding: 20px;
+  font-size: 15px;
+  display: flex;
+  flex-direction:column;
+    align-items: center;
+  justify-content: center;
+  height: auto;
+  background: #f2f2f2;
+  border: #84a4f1 1px solid;
+  border-radius: 5px;
+
+ 
+}
+
+.login-form .form-row {
+  margin-bottom: 0;
+}
+
+.login-form label {
+  position: relative;
+  z-index: 2;
+}
+
+.login-form input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 0px;
+  padding: 0 20px;
+  outline: #3498db;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+.login-form .form-row {
+  margin-bottom: 10px;
+}
+
+
+
+  .login-form input {
+    
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    outline:#3498db;
+  }
+ 
+.btn-login {
+  width: 40%;
+  height: 40px;
+  background: #84a4f1;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 10px;
 }
