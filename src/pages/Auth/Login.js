@@ -94,8 +94,8 @@ const Login = () => {
 
 const doLogin = () => {
     // Trim input values
-    const trimmedEmail = email.trim();
-    const trimmedPassword = password.trim();
+    const trimmedEmail = document.querySelector('input[name="email"]').value.trim();
+    const trimmedPassword = document.querySelector('input[name="password"]').value.trim();
   
     console.log('Email:', trimmedEmail);
     console.log('Password:', trimmedPassword);
