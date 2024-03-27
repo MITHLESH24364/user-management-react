@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Form, useNavigate } from 'react-router-dom';
 import ViTextInput from '../../components/ViTextInput';
 import ViPasswordInput from '../../components/ViPasswordInput';
 
@@ -40,7 +40,9 @@ const doLogin = () => {
   
 
   return (
+ 
     <div className="login-form">
+     <form >
       <h1>User Login</h1>
       <br />
       <ViTextInput title="Enter Your Email Id" name="email" handleChange={handleChange} value={users.email} />
@@ -52,6 +54,8 @@ const doLogin = () => {
           Login
         </button>
       </div>
+      </form>
+     
     </div>
   );
 };

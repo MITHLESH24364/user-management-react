@@ -1,5 +1,5 @@
 import React from 'react';
-import { validateEmail } from '../utils/common.js';
+import { validatePassword } from '../utils/common.js';
 
 
 const ViTextInput = (props) => {
@@ -9,8 +9,8 @@ const ViTextInput = (props) => {
   const showEmailError = () => {
     return (
       props.isSubmitted &&
-      props.name === 'email' &&
-      !validateEmail(props.value)
+      props.name === 'password' &&
+      !validatePassword(props.value)
     );
   };
 
@@ -32,7 +32,7 @@ const ViTextInput = (props) => {
       <div className="underline"></div>
       <label>{props.title}</label>
       {showEmailError() && <span>{props.errMessage}</span>}
-      {showError() && props.name !== 'email' && <span>{props.errMessage}</span>}
+      {showError() && props.name !== 'password' && <span>{props.errMessage}</span>}
     </div>
   );
 };

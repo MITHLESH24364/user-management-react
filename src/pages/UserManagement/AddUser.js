@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { saveUserData } from "./Data";
 import { computeHeadingLevel } from "@testing-library/react";
 import ViTextInput from "../../components/ViTextInput";
-import { validateEmail } from "../../utils/common";
+import { validateEmail, validatePassword, validateUsername } from "../../utils/common";
 import axios from "axios";
 import { prevState } from "react";
 import ViPasswordInput from "../../components/ViPasswordInput";
@@ -66,9 +66,13 @@ const AddUser = () => {
       setErrMsg(prevState => ({ ...prevState, username: 'Username Required' }));
       isValid = false;
     }
+
     if (password === '') {
       setErrMsg(prevState => ({ ...prevState, password: 'Password Required' }));
       isValid = false;
+    }else if (!validatePassword(password)) {
+        setErrMsg(prevState => ({ ...prevState, password: 'Invalid Password' }));
+        isValid = false;
     }
     
     if (email === '') {
