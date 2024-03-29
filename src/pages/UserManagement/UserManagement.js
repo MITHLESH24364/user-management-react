@@ -13,8 +13,8 @@ const UserManagement = () => {
       name: "Id",
     },
     {
-      key: "username",
-      name: "Username",
+      key: "name",
+      name: "Name",
     },
     {
       key: "email",

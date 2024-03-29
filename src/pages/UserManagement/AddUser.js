@@ -8,8 +8,7 @@ import { validateEmail, validatePassword, validateUsername } from "../../utils/c
 import axios from "axios";
 import { prevState } from "react";
 import ViPasswordInput from "../../components/ViPasswordInput";
-
-
+import ViNumberInput from "../../components/ViNumberInput";
 
 
  
@@ -20,15 +19,16 @@ const AddUser = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [users, setUsers] = useState({
-
-    username: '',
+    id: '',
+    name: '',
     password: '',
     email: '',
     age: '',
     city: ''
   });
   const [errMsg, setErrMsg] = useState({
-    username: '',
+    id: '',
+    name: '',
     password: '',
     email: '',
     age: '',
@@ -36,34 +36,17 @@ const AddUser = () => {
   });
 
 
-
-  // const validateForm = () => {
-  //   let isValid = true;
-  //   if (users.username === '') {
-  //     errMsg.username = 'Username Required';
-  //     isValid = false;
-  //   }
-  //   if (users.email === '') {
-  //     errMsg.email = 'Email Required';
-  //     isValid = false;
-  //   } 
-  //   if (users.age === '') {
-  //     errMsg.age = 'Age Required';
-  //     isValid = false;
-  //   }
-  //   if (users.city === '') {
-  //     errMsg.city = 'City Required';
-  //     isValid = false;
-  //   }
-  //   return isValid;
-  // }
-
   const validateForm = () => {
     let isValid = true;
-    const { username, password, email, age, city } = users;
+    const { id, name, password, email, age, city } = users;
   
-    if (username === '') {
-      setErrMsg(prevState => ({ ...prevState, username: 'Username Required' }));
+    if (id === '') {
+      setErrMsg(prevState => ({ ...prevState, id: 'ID Required' }));
+      isValid = false;
+    }
+    
+    if (name === '') {
+      setErrMsg(prevState => ({ ...prevState, name: 'Name Required' }));
       isValid = false;
     }
 
@@ -132,19 +115,35 @@ const AddUser = () => {
       
 
             <div class="form-row">
+            <ViNumberInput
+                title="Enter Your ID"
+                name="id"
+                id="id"
+                value={users.id}
+                handleChange={handleChange}
+                isSubmitted={isSubmitted}
+                errMessage={errMsg.id}
+                />
+
+
               {/* usermane start */}
                 <ViTextInput
-                title="Enter Your Username"
-                name="username"
-                id="username"
-                value={users.username}
+                title="Enter Your Name"
+                name="name"
+                id="name"
+                value={users.name}
                 handleChange={handleChange}
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.username}
                 />
                 {/* usermane end */}
-                {/* password start */}
-                <ViPasswordInput
+              
+                
+            </div>
+            <br/>
+            <div class="form-row">
+                 {/* password start */}
+                 <ViPasswordInput
                 title="Enter Your Password"
                 name="password"
                 id="password"
@@ -153,11 +152,8 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.password}
                 />
-                {/* password end */}  
-                
-            </div>
-            <br/>
-            <div class="form-row">
+                {/* password end */} 
+
            {/* email start */}
            <ViTextInput
                 title="Enter Your Email Address"
@@ -169,6 +165,11 @@ const AddUser = () => {
                 errMessage={errMsg.email}
                 />
                 {/* email end */}
+              
+              
+            </div>
+            <br/>
+            <div class="form-row">
                 {/* password start */}
                 <ViTextInput
                 title="Enter Your Age"
@@ -180,10 +181,7 @@ const AddUser = () => {
                 errMessage={errMsg.age}
                 />
                 {/* password end */}
-              
-            </div>
-            <br/>
-            <div class="form-row">
+
                 {/* city start */} 
                 <ViTextInput
                 title="Enter Your City"
@@ -199,7 +197,7 @@ const AddUser = () => {
             <div class="form-row">
                 <div class="input-data textarea">
                     <div class="form-row submit-btn">
-                        <div class="input-data">
+                        <div className="form-froup">
                             <button type="button" className="btn" onClick={saveForm}>Save</button>
 
                         </div>
@@ -219,170 +217,3 @@ const AddUser = () => {
 
 export default AddUser;
 
-
-
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { addUser } from './Data';
-
-// const AddUser = () => {
-//   const navigate = useNavigate();
-
-//   const [user, setUser] = useState({
-//     username: '',
-//     email: '',
-//     age: '',
-//     city: ''
-//   });
-
-//   const handleInputChange = (event) => {
-//     const { name, value } = event.target;
-//     setUser({ ...user, [name]: value });
-//     console.log('User:', user);
-//   };
-
-//   const saveForm = () => {
-//     addUser(user);
-//     navigate('/user-management');
-//   };
-
-//   return (
-//     <div>
-//       <h2 className="add-user">Add User</h2>
-//       <div className="container">
-//         <div className="text"></div>
-//         <form>
-          
-//              <div className="form-row">
-//                           <div className="input-data">
-//                             <input type="text" name="username" onChange={handleInputChange} value={user.username} required />
-//                             <div className="underline"></div>
-//                             <label htmlFor="">Enter Your Username</label>
-//                           </div>
-//                           <div className="input-data">
-//                             <input type="email" name="email" value={user.email} onChange={handleInputChange} required />
-//                             <div className="underline"></div>
-//                             <label htmlFor="">Enter Your Email Address</label>
-//                           </div>
-//                         </div>
-//                         <div className="form-row">
-//                           <div className="input-data">
-//                             <input type="number" name="age" value={user.age} onChange={handleInputChange} required />
-//                             <div className="underline"></div>
-//                             <label htmlFor="">Enter Your Age</label>
-//                           </div>
-//                           <div className="input-data">
-//                             <input type="text" name="city" value={user.city} onChange={handleInputChange} required />
-//                             <div className="underline"></div>
-//                             <label htmlFor="">Enter Your City</label>
-//                           </div>
-//                         </div>
-//                         <div className="form-row">
-//                           <div className="input-data textarea">
-//                          <div className="form-row submit-btn">
-//                               <div className="input-data">
-//                                 <button className="btn" onClick={saveForm}>Save</button>
-//                               </div>
-//                             </div>
-//                           </div>
-//                         </div>
-                        
-          
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AddUser;
-
-
-
-
-
-
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-
-
-
-// const AddUser = () => {
-//     const navigate = useNavigate(); // Changed to camelCase as per React convention
-
-//     const [users, setUsers] = useState({
-//         username: '',
-//         email: '',
-//         age: '',
-//         city: ''
-//     });
-
-//     const handleUsernameChange = (event) => {
-//         setUsers({...users, username: event.target.value})
-//     }
-
-//     const handleEmailChange = (event) => {
-//         setUsers({...users, email: event.target.value})
-//     }
-
-//     const handleAgeChange = (event) => {
-//         setUsers({...users, age: event.target.value})
-//     }
-
-//     const handleCityChange = (event) => {
-//         setUsers({...users, city: event.target.value})
-//     }
-
-//     const saveForm = (event) => {
-//         event.preventDefault(); // Prevent the default form submission
-//         saveUserData(users); // Save user data
-//         console.log('User data saved:', users);
-//         navigate('/user-management'); // Navigate to user management page
-//     }
-
-//     return (
-//         <div>
-//             <h2 className="add-user">Add User</h2>
-//             <div class="container">
-//                 <form onSubmit={saveForm}> {/* Added onSubmit attribute */}
-//                     <div class="form-row">
-//                         <div class="input-data">
-//                             <input type="text" id="fullname" name="fullname" onChange={handleUsernameChange} value={users.username} required />
-//                             <div class="underline"></div>
-//                             <label for="">Enter Your Username</label>
-//                         </div>
-//                         <div class="input-data">
-//                             <input type="email" id="email" name="email" value={users.email} onChange={handleEmailChange} required />
-//                             <div class="underline"></div>
-//                             <label for="">Enter Your Email Address</label>
-//                         </div>
-//                     </div>
-//                     <div class="form-row">
-//                         <div class="input-data">
-//                             <input type="number" id="number" name="number" value={users.age} onChange={handleAgeChange} required />
-//                             <div class="underline"></div>
-//                             <label for="">Enter Your Age</label>
-//                         </div>
-//                         <div class="input-data">
-//                             <input type="text" id="address" name="address" value={users.city} onChange={handleCityChange} required />
-//                             <div class="underline"></div>
-//                             <label for="">Enter Your City</label>
-//                         </div>
-//                     </div>
-//                     <div class="form-row submit-btn">
-//                         <div class="input-data">
-//                             <button className="btn" type="submit">Save</button> {/* Changed onClick to type="submit" */}
-//                         </div>
-//                     </div>
-//                 </form>
-//             </div>
-//         </div>
-//     );}
-
-
-// export default AddUser;

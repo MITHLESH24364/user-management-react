@@ -43,7 +43,7 @@ const doLogin = () => {
  
     <div className="login-form">
      <form >
-      <h1>User Login</h1>
+      <h1 className='add-user'>User Login</h1>
       <br />
       <ViTextInput title="Enter Your Email Id" name="email" handleChange={handleChange} value={users.email} />
       <br />
