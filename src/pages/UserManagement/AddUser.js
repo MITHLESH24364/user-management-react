@@ -134,7 +134,7 @@ const AddUser = () => {
                 value={users.name}
                 handleChange={handleChange}
                 isSubmitted={isSubmitted}
-                errMessage={errMsg.username}
+                errMessage={errMsg.name}
                 />
                 {/* usermane end */}
               
@@ -142,17 +142,7 @@ const AddUser = () => {
             </div>
             <br/>
             <div class="form-row">
-                 {/* password start */}
-                 <ViPasswordInput
-                title="Enter Your Password"
-                name="password"
-                id="password"
-                value={users.password}
-                handleChange={handleChange}
-                isSubmitted={isSubmitted}
-                errMessage={errMsg.password}
-                />
-                {/* password end */} 
+                
 
            {/* email start */}
            <ViTextInput
@@ -165,6 +155,18 @@ const AddUser = () => {
                 errMessage={errMsg.email}
                 />
                 {/* email end */}
+
+                 {/* password start */}
+                 <ViPasswordInput
+                title="Enter Your Password"
+                name="password"
+                id="password"
+                value={users.password}
+                handleChange={handleChange}
+                isSubmitted={isSubmitted}
+                errMessage={errMsg.password}
+                />
+                {/* password end */} 
               
               
             </div>

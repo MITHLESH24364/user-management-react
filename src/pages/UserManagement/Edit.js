@@ -25,14 +25,14 @@ const Edit = () => {
 
     const [user, setUser] = useState({
         id: '',
-        username: '',
+        name: '',
         email: '',
         age: '',
         city: ''
     });
 
     const [errMsg, setErrMsg] = useState({
-        username: '',
+        name: '',
         email: '',
         age: '',
         city: ''
@@ -55,10 +55,10 @@ const Edit = () => {
 
     const validateForm = () => {
         let isValid = true;
-        const { username, email, age, city } = user;
+        const { name, email, age, city } = user;
       
-        if (username === '') {
-          setErrMsg(prevState => ({ ...prevState, username: 'Username Required' }));
+        if (name === '') {
+          setErrMsg(prevState => ({ ...prevState, name: 'Name Required' }));
           isValid = false;
         }
         
@@ -106,18 +106,35 @@ const Edit = () => {
                 <div className="text"></div>
                 <form>
                     <div className="form-row">
+                        {/* Name start */}
                        <ViTextInput
                             type="text"
-                            id="username"
-                            name="username"
-                            title="Enter Your Username"
-                            value={user.username}
+                            id="name"
+                            name="name"
+                            title="Enter Your Name"
+                            value={user.name}
                             handleChange={handleInputChange}
-                            errMsg={errMsg.username}
-                            isSubmitted={isSubmitted}
-                            
+                            errMsg={errMsg.name}
+                            isSubmitted={isSubmitted} 
                         />
-                        <ViPasswordInput
+                        {/* Name end */}
+                     {/* usermane start */}
+                       <ViTextInput
+                            type="email"
+                            id="email"
+                            name="email"
+                            title="Enter Your Email Address"
+                            value={user.email}
+                            handleChange={handleInputChange}
+                            errMsg={errMsg.email}
+                            isSubmitted={isSubmitted}
+                            />
+                    {/* usermane end */}
+                    </div>
+                    <br/>
+                    <div className="form-row">
+                        {/* Password start */}
+                         <ViPasswordInput
                             type="password"
                             id="password"
                             name="password"
@@ -127,22 +144,8 @@ const Edit = () => {
                             errMsg={errMsg.password}
                             isSubmitted={isSubmitted}
                         />
-
-                        
-                    </div>
-                    <br/>
-                    <div className="form-row">
-                    <ViTextInput
-                            type="email"
-                            id="email"
-                            name="email"
-                            title="Enter Your Email Address"
-                            value={user.email}
-                            handleChange={handleInputChange}
-                            errMsg={errMsg.email}
-                            isSubmitted={isSubmitted}
-                            
-                        />
+                        {/* Password end */}
+                        {/* Age start */}
                         <ViTextInput
                             type="number"   
                             id="age"
@@ -153,11 +156,11 @@ const Edit = () => {
                             errMsg={errMsg.age}
                             isSubmitted={isSubmitted}
                         />
-                    
+                        {/* Age end */}
                     </div>
                     <br/>
                     <div className="form-row">
-                 
+                        {/* City start */}
                         <ViTextInput
                             type="text"
                             id="city"
@@ -166,15 +169,14 @@ const Edit = () => {
                             value={user.city}
                             handleChange={handleInputChange}
                             errMsg={errMsg.city}
-                            isSubmitted={isSubmitted}
-                            
+                            isSubmitted={isSubmitted}  
                         />
-                
+                        {/* City end */}
 
                        
                     
                     </div>
-                
+                    {/*button start */}
                     <div className="form-row">
                         <div className="input-data textarea">
                             <div className="form-row submit-btn">
@@ -184,6 +186,7 @@ const Edit = () => {
                             </div>
                         </div>
                     </div>
+                    {/*button end */}
                 </form>
             </div>
         </div>
