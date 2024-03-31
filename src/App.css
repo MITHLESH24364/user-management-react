@@ -1,3 +1,391 @@
+/* * {
+  margin: 0;
+  padding:0;
+  overflow-x: hidden;
+}
+.header {
+  background-color: grey;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.header-arrange{
+  padding: 15px;
+ 
+}
+
+.row{
+  height: 80vh;
+}
+.sidebar {
+  float: left;
+  background-color: rgb(66, 66, 67);
+  width: 15%;
+  color: #ffffff;
+  padding: 2.5%;
+  height: 80vh;
+}
+
+.main-body {
+  float: right;
+  background-color: #fbfbfb;
+  width: 70%;
+  padding: 2.5%;
+  height: 80vh;
+}
+
+.footer {
+  background-color: grey;
+ 
+  color: #ffffff;
+  clear: both;
+  text-align: center;
+  width: 100%;
+  height: 50px;
+}
+
+ 
+
+
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  padding: 10px;
+  background-color: #4d4d4d;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.sidebar-nav li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+table {
+  margin-top: 20px;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #474242;
+  text-align: center;
+  padding: 8px;
+}
+th {
+  background-color: #4d4d4d;
+  color: #ffffff;
+}
+
+* tr:nth-child(even) {
+  background-color: #a6a0a0;
+
+}
+.btn {
+  background-color: #84a4f1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.btn-danger {
+  background-color: #f44336;
+}
+.pull-right {
+  float: right;
+}
+.btn-add {
+  float: right;
+}
+.btn-edit {
+  background-color: #4CAF50;
+}
+
+
+
+
+
+
+
+
+.container {
+  background: #fff;
+  height: 420px;
+  padding: 25px 40px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+
+.container form {
+  padding: 10px;
+}
+
+.container form .form-row {
+  display: flex;
+  margin: 32px 0;
+  justify-content: center;
+}
+
+form .form-row .input-data {
+  width: 100%;
+  height: 40px;
+  margin: 0 20px;
+  position: relative;
+}
+
+form .form-row .textarea {
+  height: 70px;
+}
+
+.input-data input,
+.textarea textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 17px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+.input-data input:focus,
+.textarea textarea:focus {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.input-data input:focus~label,
+.textarea textarea:focus~label,
+.input-data input:valid~label,
+.textarea textarea:valid~label {
+  transform: translateY(-30px);
+  font-size: 14px;
+  color: #3498db;
+}
+
+.textarea textarea {
+  resize: none;
+  padding-top: 10px;
+}
+
+.input-data label {
+  position: absolute;
+  pointer-events: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  top: -10px; 
+}
+
+.input-data input:focus~label,
+.textarea textarea:focus~label,
+.input-data input:valid~label,
+.textarea textarea:valid~label {
+  transform: translateY(-10px);
+  font-size: 14px;
+  color: #3498db;
+}
+
+
+.textarea label {
+  width: 100%;
+  bottom: 40px;
+  background: #fff;
+} 
+
+.input-data .underline {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+} 
+
+
+
+.input-data input:focus~.underline:before,
+.input-data input:valid~.underline:before,
+.textarea textarea:focus~.underline:before,
+.textarea textarea:valid~.underline:before {
+  transform: scale(1);
+}
+
+.submit-btn .input-data {
+  overflow: hidden;
+  height: 45px !important;
+  width: 25% !important;
+  border-radius: 10px;
+}
+
+
+.submit-btn .input-data .inner {
+  height: 100%;
+  width: 300%;
+  position: absolute;
+  left: -100%;
+  background-color: #ff8522;
+  transition: all 0.4s;
+}
+
+.submit-btn .input-data:hover .inner {
+  left: 0;
+}
+
+.submit-btn .input-data input {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 700px) {
+  .container .text {
+      font-size: 30px;
+  }
+
+  .container form {
+      padding: 10px 0 0 0;
+  }
+
+  .container form .form-row {
+      display: block;
+  }
+
+  form .form-row .input-data {
+      margin: 35px 0 !important;
+  }
+
+  .submit-btn .input-data {
+      width: 40% !important;
+  }
+}
+.add-user{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+span {
+  color: #e11414;
+}
+.login-form {
+  
+  width: 340px;
+  margin: 200px auto ;
+  padding: 20px;
+  font-size: 15px;
+  display:flex;
+  background: #f2f2f2;
+  border: #84a4f1 1px solid;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.login-form .form-row {
+  margin-bottom: 0;
+}
+
+.login-form label {
+  position: relative;
+  z-index: 2;
+  color: #3498db;
+}
+
+.login-form input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 0px;
+  padding: 0 20px;
+  outline: #b0b5b9;
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+.login-form .form-row {
+  margin-bottom: 10px;
+}
+
+
+
+  .login-form input {
+    
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    outline:#3498db;
+    display: flex;
+    justify-content: center;
+  }
+ 
+.btn-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 40px;
+  background: #84a4f1;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+}
+.form-group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error-message{
+  color: red;
+  font-size: 15px;
+} */
+
 * {
   margin: 0;
   padding:0;
@@ -8,10 +396,12 @@
   text-align: center;
   width: 100%;
   height: 70px;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
 }
 .header-arrange{
   padding: 15px;
-  margin: auto;
 }
 .row{
   height: 80vh;
@@ -391,3 +781,7 @@ span {
   align-items: center;
   flex-direction: column;
 }
+.error-message{
+  color: red;
+  font-size: 15px;
+} 

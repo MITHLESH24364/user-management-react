@@ -10,22 +10,24 @@ import Detail from "./pages/UserManagement/Detail";
 import Delete from "./pages/UserManagement/Delete";
 import Edit from "./pages/UserManagement/Edit";
 import Login from "./pages/Auth/Login";
+import PrivateRoute from "./routes/PrivateRoute";
+
 
 function App() {
   return (
     <div>
       <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login/>} />
-            <Route path="/" element={<Layout />} >
-              <Route path="/user-management" element={<UserManagement/>} />
-              <Route path="/user-management/add" element={<AddUser/>} />
-              <Route path="/user-management/detail/:userId" element={<Detail/>} />
-              <Route path="/faq" element={<Faq/>} />
-              <Route path="/contact" element={<Contact/>} />
-              <Route path="/user-management/detail/:id" element={<Detail/>} />
-              <Route path="/user-management/delete/:id" element={<Delete/>} />
-              <Route path="/user-management/edit/:id" element={<Edit/>} />
+            <Route path="/login" element={<Login/>} />
+            <Route path="/" element={<PrivateRoute component= {Layout} />} >
+              <Route path="/user-management" element={<PrivateRoute component= {UserManagement} />}/>
+              <Route path="/user-management/add" element={<PrivateRoute component= {AddUser} />}/>
+              <Route path="/user-management/detail/:userId" element={<PrivateRoute component= {Detail} />} />
+              <Route path="/faq"  element={<PrivateRoute component= {Faq} />} />
+              <Route path="/contact"  element={<PrivateRoute component= {Contact} />} />
+              <Route path="/user-management/detail/:id" element={<PrivateRoute component= {Detail} />}/>
+              <Route path="/user-management/delete/:id"  element={<PrivateRoute component= {Delete} />} />
+              <Route path="/user-management/edit/:id"  element={<PrivateRoute component= {Edit} />} />
             </Route>
           </Routes>
         </BrowserRouter>

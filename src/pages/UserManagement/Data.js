@@ -28,7 +28,7 @@ const data = [
       name: 'Subin Sedhai',
       email: 'suninsedhai002@gmail.com',
       age: 22,
-      city: 'Kathmandu'
+      city: 'Panchthar'
     },
     {
       id: 3,
