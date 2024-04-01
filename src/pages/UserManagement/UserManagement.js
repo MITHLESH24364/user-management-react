@@ -63,7 +63,7 @@ useEffect(() => {
     <div>
       <h1 className="add-user">User Management</h1>
 
-      <Link to="/user-management/add" className="btn pull-right">Add Uer</Link>
+      <Link to="/user-management/add" className="btn pull-right">Add User</Link>
       {/* <table>
         <thead>
           <tr>
