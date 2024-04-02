@@ -20,7 +20,7 @@ const data = [
       id: 1,
       name: 'Mithlesh Kumar Singh',
       email: 'singhmithlesh095@gmail.com',
-      age: 23,
+      age: 22,
       city: 'Sarlahi'
     },
     {

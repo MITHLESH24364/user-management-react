@@ -39,14 +39,15 @@ const Login = () => {
       <form>
         <h1 className='add-user'>User Login</h1>
         <br />
-
+      <div className="error-message-box">
         {error && <p className="error-message">{error}</p>}
+      </div>
         <br />
         <ViTextInput title="Enter Your Email Id" name="email" handleChange={handleChange} value={users.email} />
         <br />
         <ViPasswordInput title="Enter Your Password" name="password" handleChange={handleChange} value={users.password} />
         <div className="form-group">
-          <button type="button" onClick={doLogin} className="btn">
+          <button type="button" onClick={doLogin}  className="btn">
             Login
           </button>
           

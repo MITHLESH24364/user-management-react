@@ -39,7 +39,7 @@ const UserManagement = () => {
     {
       name: "Edit",
       link: "/user-management/edit",
-      className: "btn"
+      className: "btn btn-edit"
     },
     {
       name: "Delete",

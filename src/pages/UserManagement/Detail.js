@@ -8,7 +8,7 @@ const Detail = () => {
   const { userId } = useParams();
   
   const [user, setUser] = useState({
-    username: "",
+    name: "",
     email: "",
     age: "",
     city: "",
@@ -30,7 +30,7 @@ const Detail = () => {
       <table>
         <thead>
           <tr>
-            <th>Username</th>
+            <th>Name</th>
             <th>Email</th>
             <th>Age</th>
             <th>City</th>
@@ -41,7 +41,7 @@ const Detail = () => {
           
             
                   <tr>
-                    <td>{user.username}</td>
+                    <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.age}</td>
                     <td>{user.city}</td>
