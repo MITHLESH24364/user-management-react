@@ -11,6 +11,7 @@ import Delete from "./pages/UserManagement/Delete";
 import Edit from "./pages/UserManagement/Edit";
 import Login from "./pages/Auth/Login";
 import PrivateRoute from "./routes/PrivateRoute";
+import Home from "./pages/Home";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login/>} />
             <Route path="/" element={<PrivateRoute component= {Layout} />} >
+              <Route path="/home" element={<PrivateRoute component= {Home} />} />
               <Route path="/user-management" element={<PrivateRoute component= {UserManagement} />}/>
               <Route path="/user-management/add" element={<PrivateRoute component= {AddUser} />}/>
               <Route path="/user-management/detail/:userId" element={<PrivateRoute component= {Detail} />} />

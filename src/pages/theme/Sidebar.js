@@ -4,6 +4,9 @@ const Sidebar = () => {
   return (
     <div>
       <ul className="sidebar-nav">
+      <li>
+          <Link to="/home">Home</Link>
+        </li>
         <li>
           <Link to="/user-management">User Management</Link>
         </li>

@@ -4,6 +4,7 @@ import ViTextInput from '../../components/ViTextInput';
 import ViPasswordInput from '../../components/ViPasswordInput';
 
 
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const Login = () => {
     if (trimmedEmail === 'admin@gmail.com' && trimmedPassword === 'admin') {
       localStorage.setItem('isLogin', "1");
       console.log('Login successful');
-      navigate('/user-management');
+      navigate('/home');
     } else {
       setError('Incorrect email or password');
     }

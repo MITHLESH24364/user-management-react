@@ -62,6 +62,9 @@ useEffect(() => {
 
   axios.get("http://localhost:4000/users").then((response) => {
     setUsers(response.data);
+  }).catch((error) => {
+    alert("Error in getting data from API");
+    console.log(error);
   });
 },[]);
 

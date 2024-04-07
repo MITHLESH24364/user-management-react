@@ -1,8 +1,9 @@
 const Home = () => {
-  const pageTitle = 'Home Page';
+  const pageTitle = 'Welcome to Home Page';
   return (
     <div>
-      {pageTitle}
+      <h1 className="add-user">{pageTitle}</h1>
+      
     </div>
   );
 }

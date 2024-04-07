@@ -18,7 +18,6 @@ const AddUser = () => {
   const [users, setUsers] = useState({
     id: '',
     name: '',
-    password: '',
     email: '',
     age: '',
     city: ''
@@ -26,7 +25,6 @@ const AddUser = () => {
   const [errMsg, setErrMsg] = useState({
     id: '',
     name: '',
-    password: '',
     email: '',
     age: '',
     city: ''
@@ -35,7 +33,7 @@ const AddUser = () => {
 
   const validateForm = () => {
     let isValid = true;
-    const { id, name, password, email, age, city } = users;
+    const { id, name, email, age, city } = users;
   
     if (id === '') {
       setErrMsg(prevState => ({ ...prevState, id: 'ID Required' }));
@@ -47,13 +45,13 @@ const AddUser = () => {
       isValid = false;
     }
 
-    if (password === '') {
-      setErrMsg(prevState => ({ ...prevState, password: 'Password Required' }));
-      isValid = false;
-    }else if (!validatePassword(password)) {
-        setErrMsg(prevState => ({ ...prevState, password: 'Invalid Password' }));
-        isValid = false;
-    }
+    // if (password === '') {
+    //   setErrMsg(prevState => ({ ...prevState, password: 'Password Required' }));
+    //   isValid = false;
+    // }else if (!validatePassword(password)) {
+    //     setErrMsg(prevState => ({ ...prevState, password: 'Invalid Password' }));
+    //     isValid = false;
+    // }
     
     if (email === '') {
       setErrMsg(prevState => ({ ...prevState, email: 'Email Required' }));
