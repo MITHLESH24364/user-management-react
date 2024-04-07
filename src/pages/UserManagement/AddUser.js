@@ -1,12 +1,9 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { saveUserData } from "./Data";
-import { computeHeadingLevel } from "@testing-library/react";
 import ViTextInput from "../../components/ViTextInput";
 import { validateEmail, validatePassword, validateUsername } from "../../utils/common";
 import axios from "axios";
-import { prevState } from "react";
 import ViPasswordInput from "../../components/ViPasswordInput";
 import ViNumberInput from "../../components/ViNumberInput";
 
@@ -157,7 +154,7 @@ const AddUser = () => {
                 {/* email end */}
 
                  {/* password start */}
-                 <ViPasswordInput
+                 {/* <ViPasswordInput
                 title="Enter Your Password"
                 name="password"
                 id="password"
@@ -165,15 +162,10 @@ const AddUser = () => {
                 handleChange={handleChange}
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.password}
-                />
+                /> */}
                 {/* password end */} 
-              
-              
-            </div>
-            <br/>
-            <div class="form-row">
-                {/* password start */}
-                <ViTextInput
+                  {/* age start */}
+                  <ViTextInput
                 title="Enter Your Age"
                 name="age"
                 id="age"
@@ -182,7 +174,12 @@ const AddUser = () => {
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.age}
                 />
-                {/* password end */}
+                {/* age end */}
+              
+            </div>
+            <br/>
+            <div class="form-row">
+            
 
                 {/* city start */} 
                 <ViTextInput

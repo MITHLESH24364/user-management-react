@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import data from './Data';
+
 import ViTable from '../../components/ViTable';
+import  axios  from "axios";
+
+
 
 
 const UserManagement = () => {
@@ -53,9 +56,13 @@ const UserManagement = () => {
 
 const [users, setUsers] = useState([]);
 useEffect(() => {
-  setTimeout(function(){
-  setUsers(data);
-  },500);
+  // setTimeout(function(){
+  // setUsers(data);
+  // },500);
+
+  axios.get("http://localhost:4000/users").then((response) => {
+    setUsers(response.data);
+  });
 },[]);
 
 
