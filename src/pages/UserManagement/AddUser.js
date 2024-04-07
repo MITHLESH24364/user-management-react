@@ -6,24 +6,29 @@ import { validateEmail, validatePassword, validateUsername } from "../../utils/c
 import axios from "axios";
 import ViPasswordInput from "../../components/ViPasswordInput";
 import ViNumberInput from "../../components/ViNumberInput";
+import { v4 as uuidv4 } from 'uuid';
 
 
  
 
 const AddUser = () => {
 
+  const { v4: uuidv4 } = require('uuid');
+uuidv4(); 
+
+
   const Navigate = useNavigate();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [users, setUsers] = useState({
-    id: '',
+    
     name: '',
     email: '',
     age: '',
     city: ''
   });
   const [errMsg, setErrMsg] = useState({
-    id: '',
+
     name: '',
     email: '',
     age: '',
@@ -35,10 +40,7 @@ const AddUser = () => {
     let isValid = true;
     const { id, name, email, age, city } = users;
   
-    if (id === '') {
-      setErrMsg(prevState => ({ ...prevState, id: 'ID Required' }));
-      isValid = false;
-    }
+  
     
     if (name === '') {
       setErrMsg(prevState => ({ ...prevState, name: 'Name Required' }));
@@ -89,12 +91,28 @@ const AddUser = () => {
 
   
     const saveForm = () => {
-    setIsSubmitted(true);
-    console.log('save form');
-    console.log('user ',users );
-    if(validateForm()){
-    Navigate('/user-management');
-    }
+     
+      const uuid = uuidv4();
+      if (validateForm()) {
+        const item = {...users, id: uuid};
+        axios.post("http://localhost:4000/users", item)
+        .then(() => {
+          console.log("User added successfully");
+          Navigate('/user-management');
+        })
+        .catch((error) => {
+          console.log("Error in adding user");
+        });
+      } else {
+        console.log("Please fill all the fields");
+      }
+
+    // setIsSubmitted(true);
+    // console.log('save form');
+    // console.log('user ',users );
+    // if(validateForm()){
+    // Navigate('/user-management');
+    // }
   }
 
 
@@ -110,7 +128,7 @@ const AddUser = () => {
       
 
             <div class="form-row">
-            <ViNumberInput
+            {/* <ViNumberInput
                 title="Enter Your ID"
                 name="id"
                 id="id"
@@ -118,7 +136,7 @@ const AddUser = () => {
                 handleChange={handleChange}
                 isSubmitted={isSubmitted}
                 errMessage={errMsg.id}
-                />
+                /> */}
 
 
               {/* usermane start */}

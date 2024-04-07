@@ -11,10 +11,10 @@ const UserManagement = () => {
 
 
   const header = [
-    {
-      key: "id",
-      name: "Id",
-    },
+    // {
+    //   key: "id",
+    //   name: "Id",
+    // },
     {
       key: "name",
       name: "Name",
